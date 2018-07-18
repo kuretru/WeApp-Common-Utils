@@ -9,7 +9,7 @@
   <packaging>jar</packaging>
 
   <name>Weapp Common Utils</name>
-  <description>Demo project for Spring Boot</description>
+  <description>微信小程序API开发通用工具</description>
 
   <parent>
     <groupId>org.springframework.boot</groupId>

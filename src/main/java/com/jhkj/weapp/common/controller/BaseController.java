@@ -17,7 +17,7 @@ public class BaseController {
     protected HttpSession session;
 
     private static final String UNKNOWN_ADDRESS = "unknown";
-    private String remoteAddress = UNKNOWN_ADDRESS;
+    protected String remoteAddress = UNKNOWN_ADDRESS;
 
     @ModelAttribute
     public void init(HttpServletRequest request, HttpServletResponse response) {
@@ -53,6 +53,10 @@ public class BaseController {
 
     private boolean unresolvedAddress(String address) {
         return StringUtils.isNullOrEmpty(address) || UNKNOWN_ADDRESS.equals(address);
+    }
+
+    public HttpServletRequest getRequest() {
+        return request;
     }
 
     public String getRemoteAddress() {
