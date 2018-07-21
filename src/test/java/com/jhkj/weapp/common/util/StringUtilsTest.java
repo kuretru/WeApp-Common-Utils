@@ -2,8 +2,10 @@ package com.jhkj.weapp.common.util;
 
 import org.junit.Test;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.Assert.*;
 
 /**
  * @author 呉真 Kuretru < kuretru@gmail.com >
@@ -18,6 +20,15 @@ public class StringUtilsTest {
         assertTrue(StringUtils.isNullOrEmpty(nullString));
         assertTrue(StringUtils.isNullOrEmpty(emptyString));
         assertFalse(StringUtils.isNullOrEmpty(normalString));
+    }
+
+    @Test
+    public void listToString() {
+        List<String> data = new ArrayList();
+        data.add("hello");
+        data.add("world");
+        String result = StringUtils.listToString(data, ",");
+        assertEquals("hello,world", result);
     }
 
 }
