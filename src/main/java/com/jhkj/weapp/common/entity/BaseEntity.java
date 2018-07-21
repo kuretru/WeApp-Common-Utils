@@ -1,5 +1,7 @@
 package com.jhkj.weapp.common.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.jhkj.weapp.common.util.InstantUtils;
 import lombok.Data;
 
 import java.time.Instant;
@@ -12,8 +14,10 @@ public abstract class BaseEntity {
 
     protected Long id;
 
+    @JsonFormat(pattern = InstantUtils.GENERAL_DATE_FORMAT, timezone = InstantUtils.GENERAL_TIME_ZONE)
     protected Instant createAt;
 
+    @JsonFormat(pattern = InstantUtils.GENERAL_DATE_FORMAT, timezone = InstantUtils.GENERAL_TIME_ZONE)
     protected Instant modifiedAt;
 
 }

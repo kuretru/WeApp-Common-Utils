@@ -13,6 +13,12 @@ public class InstantUtils {
      * 通用日期格式
      */
     public static final String GENERAL_DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
+
+    /**
+     * 通用时区
+     */
+    public static final String GENERAL_TIME_ZONE = "GMT+8";
+
     private static final DateTimeFormatter FORMATTER = DateTimeFormatter
             .ofPattern(GENERAL_DATE_FORMAT)
             .withZone(ZoneId.systemDefault());
