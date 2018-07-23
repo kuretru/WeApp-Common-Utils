@@ -21,7 +21,7 @@ public class SuffixFilter {
      * @param suffix 指定后缀名
      * @return 能否通过
      */
-    public boolean filter(String suffix) {
+    public boolean doFilter(String suffix) {
         if (suffix == null) {
             return false;
         }
