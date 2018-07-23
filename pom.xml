@@ -8,7 +8,7 @@
   <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>Weapp Common Utils</name>
+  <name>WeApp Common Utils</name>
   <description>微信小程序API开发通用工具</description>
 
   <parent>
