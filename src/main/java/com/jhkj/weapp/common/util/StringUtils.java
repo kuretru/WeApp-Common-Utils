@@ -1,5 +1,7 @@
 package com.jhkj.weapp.common.util;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -8,7 +10,7 @@ import java.util.List;
 public class StringUtils {
 
     /**
-     * 人为设置的未接受到数据时使用的空字符串
+     * 人为设置的未接收到数据时使用的空字符串
      */
     public static final String EMPTY_STRING = "EMPTY";
 
@@ -38,6 +40,20 @@ public class StringUtils {
             }
         }
         return builder.toString();
+    }
+
+    /**
+     * 将单一字符串转换为单字符串list表
+     *
+     * @param text      单一字符串
+     * @param separator 分隔符
+     * @return 字符串list表
+     */
+    public static List<String> stringToList(String text, String separator) {
+        if (StringUtils.isNullOrEmpty(text) || StringUtils.isNullOrEmpty(separator)) {
+            return new ArrayList<>();
+        }
+        return Arrays.asList(text.split(separator));
     }
 
 }

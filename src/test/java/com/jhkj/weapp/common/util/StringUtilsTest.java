@@ -31,4 +31,12 @@ public class StringUtilsTest {
         assertEquals("hello,world", result);
     }
 
+    @Test
+    public void stringToList() {
+        String text = "hello#world";
+        List<String> result = StringUtils.stringToList(text, "#");
+        assertEquals("hello", result.get(0));
+        assertEquals("world", result.get(1));
+    }
+
 }
