@@ -70,7 +70,7 @@ public class ApiResponse {
     }
 
     public static ApiResponse dataNotFound(String data) {
-        return new ApiResponse(4003, "data not found", "数据未找到");
+        return new ApiResponse(4003, "data not found", "数据未找到：" + data);
     }
 
     public static ApiResponse userUnauthorized(String data) {
