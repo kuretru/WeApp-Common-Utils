@@ -73,11 +73,11 @@ public class ApiResponse {
         return new ApiResponse(4003, "data not found", "数据未找到：" + data);
     }
 
-    public static ApiResponse userUnauthorized(String data) {
+    public static ApiResponse userUnauthenticated(String data) {
         return new ApiResponse(5001, "user unauthorized", "API身份认证失败：" + data);
     }
 
-    public static ApiResponse adminUnauthorized(String data) {
+    public static ApiResponse adminUnauthenticated(String data) {
         return new ApiResponse(5002, "admin unauthorized", "管理员身份认证失败：" + data);
     }
 
