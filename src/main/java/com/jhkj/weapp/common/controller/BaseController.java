@@ -1,5 +1,6 @@
 package com.jhkj.weapp.common.controller;
 
+import com.jhkj.weapp.common.exception.UserUnauthenticatedException;
 import com.jhkj.weapp.common.util.StringUtils;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
@@ -18,6 +19,7 @@ public class BaseController {
 
     private static final String UNKNOWN_ADDRESS = "unknown";
     protected String remoteAddress = UNKNOWN_ADDRESS;
+    protected long userId = -1;
 
     @ModelAttribute
     public void init(HttpServletRequest request, HttpServletResponse response) {
@@ -25,6 +27,20 @@ public class BaseController {
         this.response = response;
         this.session = request.getSession();
         setRemoteAddress();
+    }
+
+    public void verifyUser(long userId) throws UserUnauthenticatedException {
+        if (this.userId != userId) {
+            throw new UserUnauthenticatedException("用户令牌与操作的用户不匹配");
+        }
+    }
+
+    private boolean unresolvedAddress(String address) {
+        return StringUtils.isNullOrEmpty(address) || UNKNOWN_ADDRESS.equals(address);
+    }
+
+    public HttpServletRequest getRequest() {
+        return request;
     }
 
     private void setRemoteAddress() {
@@ -51,16 +67,16 @@ public class BaseController {
         remoteAddress = "0:0:0:0:0:0:0:1".equals(ip) ? "127.0.0.1" : ip;
     }
 
-    private boolean unresolvedAddress(String address) {
-        return StringUtils.isNullOrEmpty(address) || UNKNOWN_ADDRESS.equals(address);
-    }
-
-    public HttpServletRequest getRequest() {
-        return request;
-    }
-
     public String getRemoteAddress() {
         return remoteAddress;
+    }
+
+    public void setUserId(long userId) {
+        this.userId = userId;
+    }
+
+    public long getUserId() {
+        return userId;
     }
 
 }
