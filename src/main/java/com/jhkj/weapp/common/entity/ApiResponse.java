@@ -1,9 +1,6 @@
 package com.jhkj.weapp.common.entity;
 
-import com.jhkj.weapp.common.util.StringUtils;
 import lombok.Getter;
-
-import java.util.List;
 
 /**
  * @author 呉真 Kuretru < kuretru@gmail.com >
@@ -55,18 +52,8 @@ public class ApiResponse {
         return new ApiResponse(4001, "missing parameters", "缺少参数：" + data);
     }
 
-    public static ApiResponse missingParameters(List<String> data) {
-        return new ApiResponse(4001, "missing parameters",
-                "缺少参数：" + StringUtils.listToString(data, ","));
-    }
-
     public static ApiResponse invalidParameters(String data) {
         return new ApiResponse(4002, "invalid parameters", "无效参数：" + data);
-    }
-
-    public static ApiResponse invalidParameters(List<String> data) {
-        return new ApiResponse(4002, "invalid parameters",
-                "无效参数：" + StringUtils.listToString(data, ","));
     }
 
     public static ApiResponse dataNotFound(String data) {

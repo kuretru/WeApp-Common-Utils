@@ -1,12 +1,15 @@
 package com.jhkj.weapp.common.controller;
 
+import com.jhkj.weapp.common.exception.MissingParametersException;
 import com.jhkj.weapp.common.exception.UserUnauthenticatedException;
+import com.jhkj.weapp.common.util.PojoUtils;
 import com.jhkj.weapp.common.util.StringUtils;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 /**
  * @author 呉真 Kuretru < kuretru@gmail.com >
@@ -29,9 +32,16 @@ public class BaseController {
         setRemoteAddress();
     }
 
-    public void verifyUser(long userId) throws UserUnauthenticatedException {
+    protected void verifyUser(long userId) throws UserUnauthenticatedException {
         if (this.userId != userId) {
             throw new UserUnauthenticatedException("用户令牌与操作的用户不匹配");
+        }
+    }
+
+    protected void checkRequiredParameters(Object dto) throws MissingParametersException {
+        List<String> requiredParameters = PojoUtils.checkRequiredParameters(dto);
+        if (!requiredParameters.isEmpty()) {
+            throw new MissingParametersException(requiredParameters);
         }
     }
 

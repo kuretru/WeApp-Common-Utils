@@ -11,10 +11,10 @@ import lombok.Data;
 @Data
 public class UserDTO {
 
-    @ApiModelProperty(value = "用户昵称", position = 1)
+    @ApiModelProperty(value = "用户昵称", position = 1, required = true)
     private String nickName;
 
-    @ApiModelProperty(value = "用户头像地址", position = 2)
+    @ApiModelProperty(value = "用户头像地址", position = 2, required = true)
     private String avatarUrl;
 
     @ApiModelProperty(value = "用户性别(0:未知,1:男性,2:女性)", position = 3)

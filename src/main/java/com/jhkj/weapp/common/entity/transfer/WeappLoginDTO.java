@@ -11,7 +11,7 @@ import lombok.Data;
 @Data
 public class WeappLoginDTO {
 
-    @ApiModelProperty("临时登录凭证")
+    @ApiModelProperty(value = "临时登录凭证", required = true)
     private String code;
 
 }
