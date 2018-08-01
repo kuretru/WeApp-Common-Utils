@@ -7,6 +7,7 @@ import java.util.List;
 /**
  * @author 呉真 Kuretru < kuretru@gmail.com >
  */
+// TODO 待重构
 @Data
 public class UploadVO {
 

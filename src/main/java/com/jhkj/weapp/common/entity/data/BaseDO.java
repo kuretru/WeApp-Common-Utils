@@ -1,4 +1,4 @@
-package com.jhkj.weapp.common.entity;
+package com.jhkj.weapp.common.entity.data;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.jhkj.weapp.common.util.InstantUtils;
@@ -10,7 +10,7 @@ import java.time.Instant;
  * @author 呉真 Kuretru < kuretru@gmail.com >
  */
 @Data
-public abstract class BaseEntity {
+public abstract class BaseDO {
 
     protected Long id;
 
