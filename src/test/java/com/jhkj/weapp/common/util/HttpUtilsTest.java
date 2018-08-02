@@ -25,8 +25,8 @@ public class HttpUtilsTest {
         requestBody.setOriginalFiles(files);
         String response = HttpUtils.post(url, JsonUtils.beanToJson(requestBody));
         ApiResponse responseBody = JsonUtils.jsonToBean(response, ApiResponse.class);
-        assertEquals(4001, responseBody.getCode());
-        assertEquals("missing parameters", responseBody.getMessage());
+        assertEquals(ApiResponse.MISSING_PARAMETERS, responseBody.getCode());
+        assertEquals(ApiResponse.MISSING_PARAMETERS_MESSAGE, responseBody.getMessage());
     }
 
 }
