@@ -1,11 +1,12 @@
 package com.jhkj.weapp.common.entity;
 
+import lombok.Data;
 import lombok.Getter;
 
 /**
  * @author 呉真 Kuretru < kuretru@gmail.com >
  */
-@Getter
+@Data
 public class ApiResponse {
 
     private int code;
