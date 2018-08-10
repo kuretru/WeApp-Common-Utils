@@ -32,6 +32,9 @@ public class StringUtils {
      * @return 单一字符串
      */
     public static String listToString(List<String> messages, String separator) {
+        if (messages == null || messages.isEmpty()) {
+            return "";
+        }
         StringBuilder builder = new StringBuilder();
         for (int i = 0; i < messages.size(); i++) {
             builder.append(messages.get(i));
