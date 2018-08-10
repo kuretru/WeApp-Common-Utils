@@ -1,6 +1,5 @@
 package com.jhkj.weapp.common.entity.data;
 
-import com.jhkj.weapp.common.util.StringUtils;
 import lombok.Data;
 
 /**
@@ -18,7 +17,7 @@ public class OptionDivisionDO {
     private String area;
 
     public String toAddressString() {
-        return province + " " + (StringUtils.isNullOrEmpty(city) ? "" : city + " ") + area + " ";
+        return province + " " + ("市辖区".equals(city) ? "" : city + " ") + area + " ";
     }
 
 }
