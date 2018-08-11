@@ -17,4 +17,7 @@ public class AdminLoginDTO {
     @ApiModelProperty(value = "密码", position = 2, required = true)
     private String password;
 
+    @ApiModelProperty(value = "验证码", position = 3, required = true)
+    private String captcha;
+
 }
