@@ -15,9 +15,6 @@ import java.time.Instant;
 @Data
 public class UserVO {
 
-    @ApiModelProperty(value = "用户API调用令牌", position = 1)
-    private String userToken;
-
     @ApiModelProperty(value = "用户ID", position = 2)
     private Long id;
 

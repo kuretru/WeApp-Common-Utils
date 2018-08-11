@@ -1,6 +1,7 @@
 package com.jhkj.weapp.common.entity.data;
 
 import com.jhkj.weapp.common.entity.transfer.UserDTO;
+import com.jhkj.weapp.common.entity.view.UserTokenVO;
 import com.jhkj.weapp.common.entity.view.UserVO;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -36,6 +37,21 @@ public class UserDO extends BaseDO {
 
     public UserVO toVO() {
         UserVO result = new UserVO();
+        result.setId(id);
+        result.setNickName(nickName);
+        result.setAvatarUrl(avatarUrl);
+        result.setGender(gender);
+        result.setLastLogin(lastLogin);
+        result.setCity(city);
+        result.setProvince(province);
+        result.setCountry(country);
+        result.setLanguage(language);
+        return result;
+    }
+
+    //TODO 优化这些重复字段
+    public UserTokenVO toTokenVO() {
+        UserTokenVO result = new UserTokenVO();
         result.setId(id);
         result.setNickName(nickName);
         result.setAvatarUrl(avatarUrl);
