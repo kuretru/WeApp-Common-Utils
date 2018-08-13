@@ -1,5 +1,6 @@
 package com.jhkj.weapp.common.controller;
 
+import com.jhkj.weapp.common.exception.AdminUnauthenticatedException;
 import com.jhkj.weapp.common.exception.MissingParametersException;
 import com.jhkj.weapp.common.exception.UserUnauthenticatedException;
 import com.jhkj.weapp.common.util.PojoUtils;
@@ -22,6 +23,8 @@ public class BaseController {
 
     private static final String UNKNOWN_ADDRESS = "unknown";
     protected String remoteAddress = UNKNOWN_ADDRESS;
+
+    protected long adminId = -1;
     protected long userId = -1;
 
     @ModelAttribute
@@ -38,6 +41,12 @@ public class BaseController {
         }
     }
 
+    protected void verifyAdmin(long adminId) throws AdminUnauthenticatedException {
+        if (this.adminId != adminId) {
+            throw new AdminUnauthenticatedException("管理员令牌与操作的管理员不匹配");
+        }
+    }
+
     protected void checkRequiredParameters(Object dto) throws MissingParametersException {
         List<String> requiredParameters = PojoUtils.checkRequiredParameters(dto);
         if (!requiredParameters.isEmpty()) {
@@ -51,6 +60,10 @@ public class BaseController {
 
     public HttpServletRequest getRequest() {
         return request;
+    }
+
+    public String getRemoteAddress() {
+        return remoteAddress;
     }
 
     private void setRemoteAddress() {
@@ -77,16 +90,20 @@ public class BaseController {
         remoteAddress = "0:0:0:0:0:0:0:1".equals(ip) ? "127.0.0.1" : ip;
     }
 
-    public String getRemoteAddress() {
-        return remoteAddress;
+    public long getUserId() {
+        return userId;
     }
 
     public void setUserId(long userId) {
         this.userId = userId;
     }
 
-    public long getUserId() {
-        return userId;
+    public long getAdminId() {
+        return adminId;
+    }
+
+    public void setAdminId(long adminId) {
+        this.adminId = adminId;
     }
 
 }

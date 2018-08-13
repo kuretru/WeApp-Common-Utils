@@ -1,6 +1,7 @@
 package com.jhkj.weapp.common.entity.data;
 
 import com.jhkj.weapp.common.entity.transfer.AdminDTO;
+import com.jhkj.weapp.common.entity.transfer.AdminUpdateDTO;
 import com.jhkj.weapp.common.entity.view.AdminVO;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -42,6 +43,17 @@ public class AdminDO extends BaseDO {
         AdminDO result = new AdminDO();
         result.setUsername(dto.getUsername());
         result.setPassword(dto.getPassword());
+        result.setNickName(dto.getNickName());
+        result.setLevel(dto.getLevel() == null ? 0 : dto.getLevel());
+        return result;
+    }
+
+    public static AdminDO fromUpdateDTO(AdminUpdateDTO dto) {
+        if (dto == null) {
+            return null;
+        }
+        AdminDO result = new AdminDO();
+        result.setUsername(dto.getUsername());
         result.setNickName(dto.getNickName());
         result.setLevel(dto.getLevel() == null ? 0 : dto.getLevel());
         return result;
