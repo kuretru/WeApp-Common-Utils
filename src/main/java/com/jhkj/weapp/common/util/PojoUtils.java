@@ -1,10 +1,13 @@
 package com.jhkj.weapp.common.util;
 
+import com.jhkj.weapp.common.entity.data.OptionDO;
 import io.swagger.annotations.ApiModelProperty;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author 呉真 Kuretru < kuretru@gmail.com >
@@ -26,6 +29,14 @@ public class PojoUtils {
             } catch (IllegalAccessException e) {
                 e.printStackTrace();
             }
+        }
+        return result;
+    }
+
+    public static Map<String, String> optionsListToMap(List<OptionDO> options) {
+        Map<String, String> result = new HashMap<>(16);
+        for (OptionDO optionDO : options) {
+            result.put(optionDO.getKey(), optionDO.getValue());
         }
         return result;
     }

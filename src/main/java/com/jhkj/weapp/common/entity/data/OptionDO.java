@@ -14,4 +14,13 @@ public class OptionDO extends BaseDO {
 
     private String value;
 
+    public OptionDO(String key, String value) {
+        this.key = key;
+        this.value = value;
+    }
+
+    public OptionDO() {
+        super();
+    }
+
 }
