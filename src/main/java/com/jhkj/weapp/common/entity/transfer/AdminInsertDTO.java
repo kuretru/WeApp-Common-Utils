@@ -7,9 +7,9 @@ import lombok.Data;
 /**
  * @author 呉真 Kuretru < kuretru@gmail.com >
  */
-@ApiModel("管理员信息传入实体")
+@ApiModel("新增管理员信息传入实体")
 @Data
-public class AdminDTO {
+public class AdminInsertDTO {
 
     @ApiModelProperty(value = "用户名", position = 1, required = true)
     private String username;

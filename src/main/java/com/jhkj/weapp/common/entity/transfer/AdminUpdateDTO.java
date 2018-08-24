@@ -11,10 +11,10 @@ import lombok.Data;
 @Data
 public class AdminUpdateDTO {
 
-    @ApiModelProperty(value = "用户名", position = 1, required = true)
+    @ApiModelProperty(value = "用户名", position = 1)
     private String username;
 
-    @ApiModelProperty(value = "管理员昵称", position = 2, required = true)
+    @ApiModelProperty(value = "管理员昵称", position = 2)
     private String nickName;
 
     @ApiModelProperty(value = "管理员等级", position = 3)

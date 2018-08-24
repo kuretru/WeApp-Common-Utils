@@ -16,4 +16,10 @@ public abstract class BaseDO {
 
     protected Instant modifiedAt;
 
+    public void addCreateTime() {
+        Instant now = Instant.now();
+        this.createAt = now;
+        this.modifiedAt = now;
+    }
+
 }

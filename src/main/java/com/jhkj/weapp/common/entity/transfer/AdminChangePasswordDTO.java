@@ -7,7 +7,7 @@ import lombok.Data;
 /**
  * @author 呉真 Kuretru < kuretru@gmail.com >
  */
-@ApiModel("管理员修改密码传入实体")
+@ApiModel("修改管理员密码传入实体")
 @Data
 public class AdminChangePasswordDTO {
 

@@ -1,10 +1,10 @@
 package com.jhkj.weapp.common.entity.data;
 
-import com.jhkj.weapp.common.entity.transfer.AdminDTO;
+import com.jhkj.weapp.common.entity.transfer.AdminInsertDTO;
 import com.jhkj.weapp.common.entity.transfer.AdminUpdateDTO;
-import com.jhkj.weapp.common.entity.view.AdminVO;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NonNull;
 
 import java.time.Instant;
 
@@ -27,36 +27,22 @@ public class AdminDO extends BaseDO {
 
     private Instant lastLogin;
 
-    public AdminVO toVO() {
-        AdminVO result = new AdminVO();
-        result.setId(id);
-        result.setNickName(nickName);
-        result.setLevel(level);
-        result.setLastLogin(lastLogin);
-        return result;
+    public AdminDO(@NonNull AdminInsertDTO dto) {
+        this.username = dto.getUsername();
+        this.password = dto.getPassword();
+        this.nickName = dto.getNickName();
+        this.level = dto.getLevel() == null ? 0 : dto.getLevel();
     }
 
-    public static AdminDO fromDTO(AdminDTO dto) {
-        if (dto == null) {
-            return null;
-        }
-        AdminDO result = new AdminDO();
-        result.setUsername(dto.getUsername());
-        result.setPassword(dto.getPassword());
-        result.setNickName(dto.getNickName());
-        result.setLevel(dto.getLevel() == null ? 0 : dto.getLevel());
-        return result;
+    public AdminDO(long id, @NonNull AdminUpdateDTO dto) {
+        this.id = id;
+        this.username = dto.getUsername();
+        this.nickName = dto.getNickName();
+        this.level = dto.getLevel() == null ? 0 : dto.getLevel();
     }
 
-    public static AdminDO fromUpdateDTO(AdminUpdateDTO dto) {
-        if (dto == null) {
-            return null;
-        }
-        AdminDO result = new AdminDO();
-        result.setUsername(dto.getUsername());
-        result.setNickName(dto.getNickName());
-        result.setLevel(dto.getLevel() == null ? 0 : dto.getLevel());
-        return result;
+    public AdminDO() {
+        super();
     }
 
 }
