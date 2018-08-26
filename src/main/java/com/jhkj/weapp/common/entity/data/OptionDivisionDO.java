@@ -8,7 +8,7 @@ import lombok.Data;
 @Data
 public class OptionDivisionDO {
 
-    private String id;
+    private Integer id;
 
     private String province;
 
@@ -16,8 +16,6 @@ public class OptionDivisionDO {
 
     private String area;
 
-    public String toAddressString() {
-        return province + " " + ("市辖区".equals(city) ? "" : city + " ") + area + " ";
-    }
+    private String division;
 
 }
