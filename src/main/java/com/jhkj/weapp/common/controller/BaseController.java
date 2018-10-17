@@ -24,8 +24,8 @@ public class BaseController {
     private static final String UNKNOWN_ADDRESS = "unknown";
     protected String remoteAddress = UNKNOWN_ADDRESS;
 
-    protected long adminId = -1;
-    protected long userId = -1;
+    private static ThreadLocal<Long> adminId = ThreadLocal.withInitial(() -> -1L);
+    private static ThreadLocal<Long> userId = ThreadLocal.withInitial(() -> -1L);
 
     @ModelAttribute
     public void init(HttpServletRequest request, HttpServletResponse response) {
@@ -36,13 +36,13 @@ public class BaseController {
     }
 
     protected void verifyUser(long userId) throws UserUnauthenticatedException {
-        if (this.userId != userId) {
+        if (BaseController.userId.get().equals(userId)) {
             throw new UserUnauthenticatedException("用户令牌与操作的用户不匹配");
         }
     }
 
     protected void verifyAdmin(long adminId) throws AdminUnauthenticatedException {
-        if (this.adminId != adminId) {
+        if (BaseController.adminId.get().equals(adminId)) {
             throw new AdminUnauthenticatedException("管理员令牌与操作的管理员不匹配");
         }
     }
@@ -91,19 +91,19 @@ public class BaseController {
     }
 
     public long getUserId() {
-        return userId;
+        return userId.get();
     }
 
     public void setUserId(long userId) {
-        this.userId = userId;
+        BaseController.userId.set(userId);
     }
 
     public long getAdminId() {
-        return adminId;
+        return adminId.get();
     }
 
     public void setAdminId(long adminId) {
-        this.adminId = adminId;
+        BaseController.adminId.set(adminId);
     }
 
 }
